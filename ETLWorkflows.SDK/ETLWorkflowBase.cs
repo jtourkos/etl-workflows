@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using ETLWorkflows.Core;
 using ETLWorkflows.Core.BlocksAbstractFactory;
+
+[assembly: InternalsVisibleTo("ETLWorkflows.SDK.Tests")]
 
 namespace ETLWorkflows.SDK
 {
@@ -17,7 +20,7 @@ namespace ETLWorkflows.SDK
     /// <typeparam name="TLoaderResult">The type of the result of the loading step.</typeparam>
     public abstract class ETLWorkflowBase<TPayload, TExtractorResult, TTransformerResult, TLoaderResult> : IETLWorkflow<TPayload, TExtractorResult, TTransformerResult, TLoaderResult>
     {
-        private readonly ILogger _logger;
+        protected ILogger _logger;
         private readonly IETLDataflowBlocksAbstractFactory _etlBlocksAbstractFactory;
 
         /// <param name="logger">A logger implementation.</param>
@@ -127,14 +130,14 @@ namespace ETLWorkflows.SDK
         protected abstract Task<TExtractorResult> ExtractAsync(TriggerRequest<TPayload> request);
 
         /// <summary>
-        /// Transform step receives the result of the extraction step, performs some transformation returning a new result.
+        /// Receives extraction's completion result, performs some transformation returning and returns new result.
         /// </summary>
         /// <param name="extractorResult"></param>
         /// <returns>A task to monitor the transformation step.</returns>
         protected abstract Task<TTransformerResult> TransformAsync(TExtractorResult extractorResult);
 
         /// <summary>
-        /// Accepts transformer's result and performs a custom loading operation with it.
+        /// Receives transformer's completion result and performs a custom loading operation with it.
         /// </summary>
         /// <param name="transformerResult"></param>
         /// <returns>A task to monitor the loading step.</returns>
@@ -146,6 +149,7 @@ namespace ETLWorkflows.SDK
 
         /// <summary>
         /// Implement this method in case you need custom logic after the extraction step is completed.
+        /// Avoid modifying the <see cref="TExtractorResult"/> but instead perform side effects with the result if needed.
         /// </summary>
         /// <param name="extractorResult"></param>
         /// <returns>A task to monitor the this step.</returns>
@@ -158,6 +162,7 @@ namespace ETLWorkflows.SDK
 
         /// <summary>
         /// Implement this method in case you need custom logic after the transformation step is completed.
+        /// Avoid modifying the <see cref="TTransformerResult"/> but instead perform side effects with the result if needed.
         /// </summary>
         /// <param name="transformerResult"></param>
         /// <returns>A task to monitor the this step.</returns>
@@ -170,6 +175,7 @@ namespace ETLWorkflows.SDK
 
         /// <summary>
         /// Implement this method in case you need custom logic after the loading step is completed.
+        /// Avoid modifying the <see cref="TLoaderResult"/> but instead perform side effects with the result if needed.
         /// </summary>
         /// <param name="loadResult"></param>
         /// <returns>A task to monitor the this step.</returns>
@@ -202,7 +208,7 @@ namespace ETLWorkflows.SDK
         /// <returns>The ETL workflow's options.</returns>
         protected virtual EtlExecutionDataflowBlockOptions GetWorkflowBlockOptions()
         {
-            return EtlExecutionDataflowBlockOptions.DefaultOptions();
+            return EtlExecutionDataflowBlockOptions.DefaultOptions;
         }
 
         #endregion

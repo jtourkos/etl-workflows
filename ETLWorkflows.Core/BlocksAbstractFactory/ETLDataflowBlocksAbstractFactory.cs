@@ -6,7 +6,7 @@ namespace ETLWorkflows.Core.BlocksAbstractFactory
 {
     public class ETLDataflowBlocksAbstractFactory : IETLDataflowBlocksAbstractFactory
     {
-        private readonly bool _optionsAreSet = false;
+        private bool _optionsAreSet = false;
         private EtlExecutionDataflowBlockOptions _etlExecutionDataflowBlockOptions;
 
         public EtlExecutionDataflowBlockOptions EtlExecutionDataflowBlockOptions
@@ -17,7 +17,11 @@ namespace ETLWorkflows.Core.BlocksAbstractFactory
             get => _etlExecutionDataflowBlockOptions;
             set
             {
-                if (!_optionsAreSet) _etlExecutionDataflowBlockOptions = value;
+                if (!_optionsAreSet)
+                {
+                    _etlExecutionDataflowBlockOptions = value;
+                    _optionsAreSet = true;
+                }
                 else
                 {
                     throw new InvalidOperationException($"Attempt to set again {nameof(EtlExecutionDataflowBlockOptions)}. These options are set INTERNALLY only once and are handled by the framework. You must override the GetWorkflowBlockOptions in your ETLWorkflowBase subclass.");

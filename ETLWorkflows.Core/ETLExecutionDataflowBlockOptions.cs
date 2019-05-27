@@ -26,26 +26,23 @@ namespace ETLWorkflows.Core
                 ExecutionDataflowBlockOptions onLoadCompletedDataflowBlockOptions
         )
         {
-            LoadDataflowBlockOptions = extractDataflowBlockOptions ?? throw new ArgumentNullException(nameof(loadDataflowBlockOptions));
+            LoadDataflowBlockOptions = loadDataflowBlockOptions ?? throw new ArgumentNullException(nameof(loadDataflowBlockOptions));
             ExtractDataflowBlockOptions = extractDataflowBlockOptions ?? throw new ArgumentNullException(nameof(extractDataflowBlockOptions));
-            TransformDataflowBlockOptions = extractDataflowBlockOptions ?? throw new ArgumentNullException(nameof(transformDataflowBlockOptions));
+            TransformDataflowBlockOptions = transformDataflowBlockOptions ?? throw new ArgumentNullException(nameof(transformDataflowBlockOptions));
             ProducerDataflowBlockOptions = producerDataflowBlockOptions ?? throw new ArgumentNullException(nameof(producerDataflowBlockOptions));
-            OnLoadCompletedDataflowBlockOptions = extractDataflowBlockOptions ?? throw new ArgumentNullException(nameof(onLoadCompletedDataflowBlockOptions));
-            OnExtractCompletedDataflowBlockOptions = extractDataflowBlockOptions ?? throw new ArgumentNullException(nameof(onExtractCompletedDataflowBlockOptions));
-            OnTransformCompletedDataflowBlockOptions = extractDataflowBlockOptions ?? throw new ArgumentNullException(nameof(onTransformCompletedDataflowBlockOptions));
+            OnLoadCompletedDataflowBlockOptions = onLoadCompletedDataflowBlockOptions ?? throw new ArgumentNullException(nameof(onLoadCompletedDataflowBlockOptions));
+            OnExtractCompletedDataflowBlockOptions = onExtractCompletedDataflowBlockOptions ?? throw new ArgumentNullException(nameof(onExtractCompletedDataflowBlockOptions));
+            OnTransformCompletedDataflowBlockOptions = onTransformCompletedDataflowBlockOptions ?? throw new ArgumentNullException(nameof(onTransformCompletedDataflowBlockOptions));
         }
 
-        public static EtlExecutionDataflowBlockOptions DefaultOptions()
-        {
-            return new EtlExecutionDataflowBlockOptions(
-                new DataflowBlockOptions() { BoundedCapacity = 1000 },
-                new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = 4 },
-                new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = 4 },
-                new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = 4 },
-                new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = 4 },
-                new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = 4 },
-                new ExecutionDataflowBlockOptions() { MaxDegreeOfParallelism = 4 }
-                );
-        }
+        public static EtlExecutionDataflowBlockOptions DefaultOptions = new EtlExecutionDataflowBlockOptions(
+            new DataflowBlockOptions() {BoundedCapacity = 1000},
+            new ExecutionDataflowBlockOptions() {MaxDegreeOfParallelism = 4},
+            new ExecutionDataflowBlockOptions() {MaxDegreeOfParallelism = 4},
+            new ExecutionDataflowBlockOptions() {MaxDegreeOfParallelism = 4},
+            new ExecutionDataflowBlockOptions() {MaxDegreeOfParallelism = 4},
+            new ExecutionDataflowBlockOptions() {MaxDegreeOfParallelism = 4},
+            new ExecutionDataflowBlockOptions() {MaxDegreeOfParallelism = 4}
+        );
     }
 }
