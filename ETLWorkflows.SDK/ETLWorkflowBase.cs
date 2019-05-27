@@ -9,9 +9,9 @@ namespace ETLWorkflows.SDK
 {
     /// <summary>
     /// Base class for creating ETL workflows.
-    /// To implement your own ETL flow, subclass your workflow class and implement the ETL methods. Hook methods are provided as well.
+    /// To implement your ETL flow, subclass your workflow class and implement the ETL methods. Hook methods are provided as well.
     /// </summary>
-    /// <typeparam name="TPayload">The type of the triggering request's payload.</typeparam>
+    /// <typeparam name="TPayload">The type of triggering request's payload.</typeparam>
     /// <typeparam name="TExtractorResult">The type of the result of the extraction step.</typeparam>
     /// <typeparam name="TTransformerResult">The type of the result of the transformation step.</typeparam>
     /// <typeparam name="TLoaderResult">The type of the result of the loading step.</typeparam>
@@ -37,7 +37,7 @@ namespace ETLWorkflows.SDK
         }
 
         /// <summary>
-        /// Starts the workflow.
+        /// Starts the workflow. Call this method from your client.
         /// </summary>
         /// <param name="cancellationToken">Cancellation token for cancelling the workflow.</param>
         /// <returns>A task to monitor the workflow.</returns>
@@ -118,14 +118,37 @@ namespace ETLWorkflows.SDK
 
         #region ETL Steps
 
+        /// <summary>
+        /// When a triggering request is sent to the producer from <see cref="FeedProducerAsync"/>, the producer pushes this request to the Extraction step to initiate the ETL process.
+        /// You can pass any custom data in your request's payload, if necessary.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>A task to monitor the extraction step.</returns>
         protected abstract Task<TExtractorResult> ExtractAsync(TriggerRequest<TPayload> request);
+
+        /// <summary>
+        /// Transform step receives the result of the extraction step, performs some transformation returning a new result.
+        /// </summary>
+        /// <param name="extractorResult"></param>
+        /// <returns>A task to monitor the transformation step.</returns>
         protected abstract Task<TTransformerResult> TransformAsync(TExtractorResult extractorResult);
+
+        /// <summary>
+        /// Accepts transformer's result and performs a custom loading operation with it.
+        /// </summary>
+        /// <param name="transformerResult"></param>
+        /// <returns>A task to monitor the loading step.</returns>
         protected abstract Task<TLoaderResult> LoadAsync(TTransformerResult transformerResult);
 
         #endregion
 
         #region Hooks
 
+        /// <summary>
+        /// Implement this method in case you need custom logic after the extraction step is completed.
+        /// </summary>
+        /// <param name="extractorResult"></param>
+        /// <returns>A task to monitor the this step.</returns>
         protected virtual Task<TExtractorResult> OnExtractCompletedAsync(TExtractorResult extractorResult)
         {
             _logger.Info($"Extract step completed for {extractorResult}");
@@ -133,6 +156,11 @@ namespace ETLWorkflows.SDK
             return Task.FromResult(extractorResult);
         }
 
+        /// <summary>
+        /// Implement this method in case you need custom logic after the transformation step is completed.
+        /// </summary>
+        /// <param name="transformerResult"></param>
+        /// <returns>A task to monitor the this step.</returns>
         protected virtual Task<TTransformerResult> OnTransformCompletedAsync(TTransformerResult transformerResult)
         {
             _logger.Info("Transform step completed");
@@ -140,6 +168,11 @@ namespace ETLWorkflows.SDK
             return Task.FromResult(transformerResult);
         }
 
+        /// <summary>
+        /// Implement this method in case you need custom logic after the loading step is completed.
+        /// </summary>
+        /// <param name="loadResult"></param>
+        /// <returns>A task to monitor the this step.</returns>
         protected virtual Task<TLoaderResult> OnLoadCompletedAsync(TLoaderResult loadResult)
         {
             _logger.Info("Load step completed");

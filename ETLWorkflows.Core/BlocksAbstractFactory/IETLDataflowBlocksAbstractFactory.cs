@@ -4,6 +4,9 @@ using System.Threading.Tasks.Dataflow;
 
 namespace ETLWorkflows.Core.BlocksAbstractFactory
 {
+    /// <summary>
+    /// Provides all the necessary factory methods of creating the workflow's blocks.
+    /// </summary>
     public interface IETLDataflowBlocksAbstractFactory
     {
         EtlExecutionDataflowBlockOptions EtlExecutionDataflowBlockOptions { get; set; }

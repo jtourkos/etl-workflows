@@ -3,6 +3,9 @@ using System.Threading.Tasks.Dataflow;
 
 namespace ETLWorkflows.Core
 {
+    /// <summary>
+    /// Contains the configuration options for all workflow components.
+    /// </summary>
     public class EtlExecutionDataflowBlockOptions
     {
         public DataflowBlockOptions ProducerDataflowBlockOptions { get; set; }
