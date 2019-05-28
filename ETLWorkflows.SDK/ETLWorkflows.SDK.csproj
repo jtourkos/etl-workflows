@@ -1,10 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Ioannis Tourkogiorgis</Authors>
     <Copyright>Ioannis Tourkogiorgis</Copyright>
     <RepositoryUrl>https://github.com/g-tourkogiorgis/ETLWorkflows</RepositoryUrl>
+    <Description>ETLWorkflows provide a minimal SDK for implementing ETL processes. ETLWorkflows builds upon the TPL Dataflow library.</Description>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
