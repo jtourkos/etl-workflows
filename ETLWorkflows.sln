@@ -11,14 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETLWorkflows.SDK", "ETLWork
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BDA5351A-54DF-4701-800E-419D6932FF2E}"
 	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETLWorkflows.Helpers", "ETLWorkflows.Helpers\ETLWorkflows.Helpers.csproj", "{AA962744-4393-402D-BC65-50067375201F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETLWorkflows.SDK.Tests", "ETLWorkflows.SDK.Tests\ETLWorkflows.SDK.Tests.csproj", "{8E6938F2-4FED-47C5-A94B-048EB244BDA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETLWorkflows.SDK.Tests", "ETLWorkflows.SDK.Tests\ETLWorkflows.SDK.Tests.csproj", "{8E6938F2-4FED-47C5-A94B-048EB244BDA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETLWorkflows.Core.Tests", "ETLWorkflows.Core.Tests\ETLWorkflows.Core.Tests.csproj", "{D646636D-189A-44D9-A052-E0A6E16998F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETLWorkflows.Core.Tests", "ETLWorkflows.Core.Tests\ETLWorkflows.Core.Tests.csproj", "{D646636D-189A-44D9-A052-E0A6E16998F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
