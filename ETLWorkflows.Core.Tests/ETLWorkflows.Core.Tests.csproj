@@ -4,6 +4,12 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <RepositoryUrl>https://github.com/g-tourkogiorgis/ETLWorkflows</RepositoryUrl>
+
+    <Authors>Ioannis Tourkogiorgis</Authors>
+
+    <Copyright>Ioannis Tourkogiorgis</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Copyright>Ioannis Tourkogiorgis</Copyright>
+    <Authors>Ioannis Tourkogiorgis</Authors>
+    <RepositoryUrl>https://github.com/g-tourkogiorgis/ETLWorkflows</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
