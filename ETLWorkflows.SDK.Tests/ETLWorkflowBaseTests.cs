@@ -85,7 +85,7 @@ namespace Tests
         }
 
         [Test]
-        public async Task Given_A_Workflow_When_Starting_Then_It_Runs_ETL_As_Expected()
+        public void Given_A_Workflow_When_Starting_Then_It_Runs_ETL_As_Expected()
         {
             var factory = new ETLDataflowBlocksAbstractFactory();
             var workflow = new ETLWorkflowTest(_loggerMock.Object, factory) { TestEtlExecutionDataflowBlockOptions = _testOptions };
@@ -105,7 +105,6 @@ namespace Tests
 
     public class ETLWorkflowTest : ETLWorkflowBase<int, string, int, bool>
     {
-        private readonly ILogger _logger;
         public EtlExecutionDataflowBlockOptions TestEtlExecutionDataflowBlockOptions { get; set; }
 
         public ETLWorkflowTest(ILogger logger) : base(logger)

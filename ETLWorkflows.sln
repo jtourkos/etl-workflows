@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETLWorkflows.FiniteProcessor", "ETLWorkflows.FiniteProcessor\ETLWorkflows.FiniteProcessor.csproj", "{F40DA113-A0AF-4921-8CD9-3E5C09E4E68D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETLWorkflows.Core", "ETLWorkflows.Core\ETLWorkflows.Core.csproj", "{CB492056-F4DD-4A9C-93AF-5DA1D6657BBD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETLWorkflows.SDK", "ETLWorkflows.SDK\ETLWorkflows.SDK.csproj", "{D958073E-FAE5-4F33-8D8D-02CCBBBA2197}"
@@ -14,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.travis.yml = .travis.yml
 		README.md = README.md
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETLWorkflows.Helpers", "ETLWorkflows.Helpers\ETLWorkflows.Helpers.csproj", "{AA962744-4393-402D-BC65-50067375201F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ETLWorkflows.SDK.Tests", "ETLWorkflows.SDK.Tests\ETLWorkflows.SDK.Tests.csproj", "{8E6938F2-4FED-47C5-A94B-048EB244BDA1}"
 EndProject
@@ -27,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F40DA113-A0AF-4921-8CD9-3E5C09E4E68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F40DA113-A0AF-4921-8CD9-3E5C09E4E68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F40DA113-A0AF-4921-8CD9-3E5C09E4E68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F40DA113-A0AF-4921-8CD9-3E5C09E4E68D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CB492056-F4DD-4A9C-93AF-5DA1D6657BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CB492056-F4DD-4A9C-93AF-5DA1D6657BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB492056-F4DD-4A9C-93AF-5DA1D6657BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,10 +31,6 @@ Global
 		{D958073E-FAE5-4F33-8D8D-02CCBBBA2197}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D958073E-FAE5-4F33-8D8D-02CCBBBA2197}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D958073E-FAE5-4F33-8D8D-02CCBBBA2197}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA962744-4393-402D-BC65-50067375201F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA962744-4393-402D-BC65-50067375201F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA962744-4393-402D-BC65-50067375201F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA962744-4393-402D-BC65-50067375201F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8E6938F2-4FED-47C5-A94B-048EB244BDA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E6938F2-4FED-47C5-A94B-048EB244BDA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E6938F2-4FED-47C5-A94B-048EB244BDA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
