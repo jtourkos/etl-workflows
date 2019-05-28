@@ -13,7 +13,7 @@ jobs:
   - stage: Publish NuGet package
     script:
     - dotnet pack -c Release
-    - dotnet nuget push ./ETLWorkflows.SDK/bin/Release/ETLWorkflows.SDK.*.nupkg --api-key $NUGET_API_KEY
+    - dotnet nuget push ./ETLWorkflows.SDK/bin/Release/ETLWorkflows.SDK.*.nupkg --api-key $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
     on:
       tags: true
       condition: $TRAVIS_TAG =~ ^(\d+\.)?(\d+\.)?(\*|\d+)$
