@@ -11,6 +11,8 @@ jobs:
     - dotnet test ./ETLWorkflows.SDK.Tests/
     - dotnet test ./ETLWorkflows.Core.Tests/
   - stage: Publish NuGet package
+    skip_cleanup: true
+    provider: script
     script:
     - dotnet pack -c Release
     - dotnet nuget push ./ETLWorkflows.SDK/bin/Release/ETLWorkflows.SDK.*.nupkg --api-key $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
