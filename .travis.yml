@@ -5,20 +5,8 @@ dist: xenial
 dotnet: 2.2
 jobs:
   include:
-  - stage: CI
+  - stage: Continuous Integration
     script:
     - dotnet build -c Release
     - dotnet test ./ETLWorkflows.SDK.Tests/
     - dotnet test ./ETLWorkflows.Core.Tests/
-  - stage: Publish NuGet package
-    skip_cleanup: true
-    provider: script
-    script:
-    - dotnet pack -c Release
-    - dotnet nuget push ./ETLWorkflows.SDK/bin/Release/ETLWorkflows.SDK.*.nupkg --api-key $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
-    on:
-      tags: true
-      condition: $TRAVIS_TAG =~ ^(\d+\.)?(\d+\.)?(\*|\d+)$
-env:
-  global:
-    secure: k/mwpntVAnI1AxBu2lAEoW5LUkiNudFZgXhpLbGn1rRSAsXxwnfyaPte2M9LYnd+usKrPDxXq5rUqgexG/Zeu55ZuRKHZMtTqn2t9ZJNp21huu4XW/SIE4jDSFcRbx1dlA4fAvr1Aqb7kTisZvA+HOrA4ua1+iTjSXpzSzAAtj9GJkgXCa/4YEeHXoL5ubGtiPig60r6xQ815kHd29wXUpzRC3SUpa8CyAxjmyfGr4ehKUpOkg6N24ogx0r64PfMPqI0ZzuB7UcH4NqnMdIpS0DmlCEmPu8FfjlM98YBAfI+rkIpSu7ezV+lVrTRKWgVDfRvRpbXqEdTDjUt9/OHtxOzrY9whV+BvKBAsBXhMCKfqnWKpu17KBJCiq615JN8QffGpO4Sbi9Bark2axzW24Ar2eUK4/0WHk50GW6KP9ln7bwHYRLd4Q6EtHzCQsBUjqGpn4u72m4f+Dgmn2uDCpiM8IzXh9SYq6fptZZoVxl2vHvWRJffHA5lttcx9/Dz9vS5aWqu6dGUg/SBpjzxHP2bITkJEYhBFQuBE+Iq3iWnS6Kmu++H6HkUMpkGvwVfv/WPYCZSaf2MTgsXqDss9lDiiVw0+4a8Zc6rP3b2H9zl0dL+6fz8Ras9IFwv5p5NcfpJAmP50XtKB1HXC/ze7U/POImKck9wzmBKs+NV3uc=
