@@ -7,6 +7,7 @@
     <RepositoryUrl>https://github.com/g-tourkogiorgis/ETLWorkflows</RepositoryUrl>
     <Description>ETLWorkflows provide a minimal SDK for implementing ETL processes. ETLWorkflows builds upon the TPL Dataflow library.</Description>
     <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
