@@ -24,7 +24,7 @@ namespace ETLWorkflows.SDK
         private readonly IETLDataflowBlocksAbstractFactory _etlBlocksAbstractFactory;
 
         /// <param name="logger">A logger implementation.</param>
-        protected ETLWorkflowBase(ILogger logger)
+        protected ETLWorkflowBase(ILogger logger = null)
             : this(logger, new ETLDataflowBlocksAbstractFactory())
         {
 
@@ -35,7 +35,7 @@ namespace ETLWorkflows.SDK
             ILogger logger,
             IETLDataflowBlocksAbstractFactory etlBlocksAbstractFactory)
         {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _logger = logger;
             _etlBlocksAbstractFactory = etlBlocksAbstractFactory ?? throw new ArgumentNullException(nameof(etlBlocksAbstractFactory));
         }
 
@@ -79,7 +79,7 @@ namespace ETLWorkflows.SDK
                 {
                     while (!cancellationToken.IsCancellationRequested && !extractBlock.Completion.IsCompleted)
                     {
-                        FeedProducerAsync(producer, _logger, cancellationToken);
+                        FeedProducerAsync(producer, cancellationToken, _logger);
                     }
                 }, cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Default);
 
@@ -112,10 +112,11 @@ namespace ETLWorkflows.SDK
         /// Start sending messages (triggering requests) to workflow's producer.
         /// </summary>
         /// <param name="targetBlock">The producer block.</param>
-        /// <param name="logger">The logger.</param>
         /// <param name="cancellationToken">Cancellation token for cancelling the producer's feeding.</param>
+        /// <param name="logger">An optional logger.</param>
         /// <returns>A task to monitor consumer's message feeding.</returns>
-        public abstract Task FeedProducerAsync(ITargetBlock<TriggerRequest<TPayload>> targetBlock, ILogger logger, CancellationToken cancellationToken);
+        public abstract Task FeedProducerAsync(ITargetBlock<TriggerRequest<TPayload>> targetBlock,
+            CancellationToken cancellationToken, ILogger logger = null);
 
         #endregion
 

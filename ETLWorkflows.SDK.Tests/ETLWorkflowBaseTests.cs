@@ -47,13 +47,6 @@ namespace Tests
         }
 
         [Test]
-        public void Given_Logger_Dependency_Is_Missing_When_Creating_A_Workflow_Then_It_Throws()
-        {
-            var ex = Assert.Throws<ArgumentNullException>(() => new ETLWorkflowTest(null));
-            Assert.That(ex.ParamName == "logger");
-        }
-
-        [Test]
         public void Given_ETLDataflowBlocksAbstractFactory_Dependency_Is_Missing_When_Creating_A_Workflow_Then_It_Throws()
         {
             var ex = Assert.Throws<ArgumentNullException>(() => new ETLWorkflowTest(_loggerMock.Object, null));
@@ -116,7 +109,8 @@ namespace Tests
             _logger = logger;
         }
 
-        public override async Task FeedProducerAsync(ITargetBlock<TriggerRequest<int>> targetBlock, ILogger logger, CancellationToken cancellationToken)
+        public override async Task FeedProducerAsync(ITargetBlock<TriggerRequest<int>> targetBlock,
+            CancellationToken cancellationToken, ILogger logger = null)
         {
             await targetBlock.SendAsync(new TriggerRequest<int>() { Payload = 1 });
             targetBlock.Complete();
