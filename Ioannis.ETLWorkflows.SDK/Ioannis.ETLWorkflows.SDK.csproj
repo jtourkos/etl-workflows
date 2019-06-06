@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ETLWorkflows.Core\ETLWorkflows.Core.csproj" />
+    <ProjectReference Include="..\Ioannis.ETLWorkflows.Core\Ioannis.ETLWorkflows.Core.csproj" />
   </ItemGroup>
 
 </Project>

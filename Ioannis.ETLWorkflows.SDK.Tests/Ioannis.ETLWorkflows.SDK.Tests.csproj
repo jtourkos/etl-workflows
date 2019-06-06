@@ -5,21 +5,23 @@
 
     <IsPackable>false</IsPackable>
 
-    <RepositoryUrl>https://github.com/g-tourkogiorgis/ETLWorkflows</RepositoryUrl>
-
     <Authors>Ioannis Tourkogiorgis</Authors>
 
     <Copyright>Ioannis Tourkogiorgis</Copyright>
+
+    <RepositoryUrl>https://github.com/g-tourkogiorgis/ETLWorkflows</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Moq" Version="4.10.1" />
     <PackageReference Include="nunit" Version="3.11.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ETLWorkflows.Core\ETLWorkflows.Core.csproj" />
+    <ProjectReference Include="..\Ioannis.ETLWorkflows.Core\Ioannis.ETLWorkflows.Core.csproj" />
+    <ProjectReference Include="..\Ioannis.ETLWorkflows.SDK\Ioannis.ETLWorkflows.SDK.csproj" />
   </ItemGroup>
 
 </Project>

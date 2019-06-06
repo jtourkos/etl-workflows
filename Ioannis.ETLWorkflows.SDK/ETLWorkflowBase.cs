@@ -6,7 +6,7 @@ using System.Threading.Tasks.Dataflow;
 using ETLWorkflows.Core;
 using ETLWorkflows.Core.BlocksAbstractFactory;
 
-[assembly: InternalsVisibleTo("ETLWorkflows.SDK.Tests")]
+[assembly: InternalsVisibleTo("Ioannis.ETLWorkflows.SDK.Tests")]
 
 namespace ETLWorkflows.SDK
 {
