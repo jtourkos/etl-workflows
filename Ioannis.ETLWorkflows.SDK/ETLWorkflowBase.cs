@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Ioannis.ETLWorkflows.Core;
 using Ioannis.ETLWorkflows.Core.BlocksAbstractFactory;
+using Ioannis.ETLWorkflows.Core.Models;
 
 [assembly: InternalsVisibleTo("Ioannis.ETLWorkflows.SDK.Tests")]
 
@@ -20,7 +21,7 @@ namespace Ioannis.ETLWorkflows.SDK
     /// <typeparam name="TLoaderResult">The type of the result of the loading step.</typeparam>
     public abstract class ETLWorkflowBase<TPayload, TExtractorResult, TTransformerResult, TLoaderResult> : IETLWorkflow<TPayload, TExtractorResult, TTransformerResult, TLoaderResult>
     {
-        protected ILogger _logger;
+        protected ILogger Logger;
         private readonly IETLDataflowBlocksAbstractFactory _etlBlocksAbstractFactory;
 
         /// <param name="logger">A logger implementation.</param>
@@ -35,7 +36,7 @@ namespace Ioannis.ETLWorkflows.SDK
             ILogger logger,
             IETLDataflowBlocksAbstractFactory etlBlocksAbstractFactory)
         {
-            _logger = logger;
+            Logger = logger;
             _etlBlocksAbstractFactory = etlBlocksAbstractFactory ?? throw new ArgumentNullException(nameof(etlBlocksAbstractFactory));
         }
 
@@ -79,7 +80,7 @@ namespace Ioannis.ETLWorkflows.SDK
                 {
                     while (!cancellationToken.IsCancellationRequested && !extractBlock.Completion.IsCompleted)
                     {
-                        FeedProducerAsync(producer, cancellationToken, _logger);
+                        FeedProducerAsync(producer, cancellationToken, Logger);
                     }
                 }, cancellationToken, TaskCreationOptions.LongRunning, TaskScheduler.Default);
 
@@ -101,7 +102,7 @@ namespace Ioannis.ETLWorkflows.SDK
             }
             catch (Exception e)
             {
-                _logger.Error($"Error occurred at the workflow: {e.GetBaseException().Message}" +
+                Logger.Error($"Error occurred at the workflow: {e.GetBaseException().Message}" +
                                   Environment.NewLine + $"StackTrace: {e.StackTrace}");
             }
         }
@@ -115,7 +116,7 @@ namespace Ioannis.ETLWorkflows.SDK
         /// <param name="cancellationToken">Cancellation token for cancelling the producer's feeding.</param>
         /// <param name="logger">An optional logger.</param>
         /// <returns>A task to monitor consumer's message feeding.</returns>
-        public abstract Task FeedProducerAsync(ITargetBlock<TriggerRequest<TPayload>> targetBlock,
+        public abstract Task FeedProducerAsync(ITargetBlock<TriggerRequest> targetBlock,
             CancellationToken cancellationToken, ILogger logger = null);
 
         #endregion
@@ -128,7 +129,7 @@ namespace Ioannis.ETLWorkflows.SDK
         /// </summary>
         /// <param name="request"></param>
         /// <returns>A task to monitor the extraction step.</returns>
-        protected abstract Task<TExtractorResult> ExtractAsync(TriggerRequest<TPayload> request);
+        protected abstract Task<TExtractorResult> ExtractAsync(TriggerRequest request);
 
         /// <summary>
         /// Receives extraction's completion result, performs some transformation returning and returns new result.
@@ -156,7 +157,7 @@ namespace Ioannis.ETLWorkflows.SDK
         /// <returns>A task to monitor the this step.</returns>
         protected virtual Task<TExtractorResult> OnExtractCompletedAsync(TExtractorResult extractorResult)
         {
-            _logger.Info($"Extract step completed for {extractorResult}");
+            Logger.Info($"Extract step completed for {extractorResult}");
 
             return Task.FromResult(extractorResult);
         }
@@ -169,7 +170,7 @@ namespace Ioannis.ETLWorkflows.SDK
         /// <returns>A task to monitor the this step.</returns>
         protected virtual Task<TTransformerResult> OnTransformCompletedAsync(TTransformerResult transformerResult)
         {
-            _logger.Info("Transform step completed");
+            Logger.Info("Transform step completed");
 
             return Task.FromResult(transformerResult);
         }
@@ -182,7 +183,7 @@ namespace Ioannis.ETLWorkflows.SDK
         /// <returns>A task to monitor the this step.</returns>
         protected virtual Task<TLoaderResult> OnLoadCompletedAsync(TLoaderResult loadResult)
         {
-            _logger.Info("Load step completed");
+            Logger.Info("Load step completed");
 
             return Task.FromResult(loadResult);
         }
@@ -194,7 +195,7 @@ namespace Ioannis.ETLWorkflows.SDK
         /// <returns>A task to monitor the cleanup operation.</returns>
         protected virtual Task CleanupAsync()
         {
-            _logger.Info("Cleaning up any resources");
+            Logger.Info("Cleaning up any resources");
 
             return Task.CompletedTask;
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
+using Ioannis.ETLWorkflows.Core.Models;
 
 namespace Ioannis.ETLWorkflows.Core.BlocksAbstractFactory
 {
@@ -29,14 +30,14 @@ namespace Ioannis.ETLWorkflows.Core.BlocksAbstractFactory
             }
         }
 
-        public BufferBlock<TriggerRequest<TPayload>> CreateProducerBlock<TPayload>()
+        public BufferBlock<TriggerRequest> CreateProducerBlock<TPayload>()
         {
-            return new BufferBlock<TriggerRequest<TPayload>>(EtlExecutionDataflowBlockOptions.ProducerDataflowBlockOptions);
+            return new BufferBlock<TriggerRequest>(EtlExecutionDataflowBlockOptions.ProducerDataflowBlockOptions);
         }
 
-        public TransformBlock<TriggerRequest<TPayload>, TExtractorResult> CreateExtractBlock<TPayload, TExtractorResult>(Func<TriggerRequest<TPayload>, Task<TExtractorResult>> func)
+        public TransformBlock<TriggerRequest, TExtractorResult> CreateExtractBlock<TPayload, TExtractorResult>(Func<TriggerRequest, Task<TExtractorResult>> func)
         {
-            return new TransformBlock<TriggerRequest<TPayload>, TExtractorResult>(func, EtlExecutionDataflowBlockOptions.ExtractDataflowBlockOptions);
+            return new TransformBlock<TriggerRequest, TExtractorResult>(func, EtlExecutionDataflowBlockOptions.ExtractDataflowBlockOptions);
         }
 
         public TransformBlock<TExtractorResult, TExtractorResult> CreateExtractCompletedBlock<TExtractorResult>(Func<TExtractorResult, Task<TExtractorResult>> func)

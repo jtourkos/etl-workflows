@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Ioannis.ETLWorkflows.Core;
 using Ioannis.ETLWorkflows.Core.BlocksAbstractFactory;
+using Ioannis.ETLWorkflows.Core.Models;
 using Moq;
 using NUnit.Framework;
 
@@ -66,7 +67,7 @@ namespace Ioannis.ETLWorkflows.SDK.Tests
 
             _etlBlocksAbstractFactoryMock.Verify(f => f.CreateProducerBlock<int>());
 
-            _etlBlocksAbstractFactoryMock.Verify(f => f.CreateExtractBlock<int, string>(It.IsAny<Func<TriggerRequest<int>, Task<string>>>()));
+            _etlBlocksAbstractFactoryMock.Verify(f => f.CreateExtractBlock<int, string>(It.IsAny<Func<TriggerRequest, Task<string>>>()));
             _etlBlocksAbstractFactoryMock.Verify(f => f.CreateExtractCompletedBlock<string>(It.IsAny<Func<string, Task<string>>>()));
 
             _etlBlocksAbstractFactoryMock.Verify(f => f.CreateTransformBlock<string, int>(It.IsAny<Func<string, Task<int>>>()));
@@ -105,35 +106,35 @@ namespace Ioannis.ETLWorkflows.SDK.Tests
 
         public ETLWorkflowTest(ILogger logger, IETLDataflowBlocksAbstractFactory etlBlocksAbstractFactory) : base(logger, etlBlocksAbstractFactory)
         {
-            _logger = logger;
+            Logger = logger;
         }
 
-        public override async Task FeedProducerAsync(ITargetBlock<TriggerRequest<int>> targetBlock,
+        public override async Task FeedProducerAsync(ITargetBlock<TriggerRequest> targetBlock,
             CancellationToken cancellationToken, ILogger logger = null)
         {
-            await targetBlock.SendAsync(new TriggerRequest<int>() { Payload = 1 });
+            await targetBlock.SendAsync(new TriggerRequest() { Payload = 1 });
             targetBlock.Complete();
         }
 
-        protected override Task<string> ExtractAsync(TriggerRequest<int> request)
+        protected override Task<string> ExtractAsync(TriggerRequest request)
         {
-            _logger.Info("ExtractAsync called");
-            _logger.Info($"TriggerRequest payload: {request.Payload}");
+            Logger.Info("ExtractAsync called");
+            Logger.Info($"TriggerRequest payload: {request.Payload}");
             return Task.FromResult(request.Payload.ToString());
         }
 
 
         protected override Task<int> TransformAsync(string extractorResult)
         {
-            _logger.Info("TransformAsync called");
-            _logger.Info($"Transformed to {int.Parse(extractorResult)}");
+            Logger.Info("TransformAsync called");
+            Logger.Info($"Transformed to {int.Parse(extractorResult)}");
             return Task.FromResult(int.Parse(extractorResult));
         }
 
         protected override Task<bool> LoadAsync(int transformerResult)
         {
-            _logger.Info("LoadAsync called");
-            _logger.Info($"Loaded result {transformerResult == 1}");
+            Logger.Info("LoadAsync called");
+            Logger.Info($"Loaded result {transformerResult == 1}");
             return Task.FromResult(transformerResult == 1);
         }
 

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 using Ioannis.ETLWorkflows.Core.BlocksAbstractFactory;
+using Ioannis.ETLWorkflows.Core.Models;
 using NUnit.Framework;
 
 namespace Ioannis.ETLWorkflows.Core.Tests.BlocksAbstractFactory
@@ -48,16 +49,16 @@ namespace Ioannis.ETLWorkflows.Core.Tests.BlocksAbstractFactory
         {
             var producer = _dataflowBlocksAbstractFactory.CreateProducerBlock<int>();
 
-            Assert.IsInstanceOf<BufferBlock<TriggerRequest<int>>>(producer);
+            Assert.IsInstanceOf<BufferBlock<TriggerRequest>>(producer);
         }
 
         [Test]
         public void Given_ETLDataflowBlocksAbstractFactory_When_Creating_Extractor_Block_Then_It_Can_Create_Block()
         {
-            Task<string> Func(TriggerRequest<int> request) => Task.FromResult(request.ToString());
+            Task<string> Func(TriggerRequest request) => Task.FromResult(request.ToString());
             var transformer = _dataflowBlocksAbstractFactory.CreateExtractBlock<int, string>(Func);
 
-            Assert.IsInstanceOf<TransformBlock<TriggerRequest<int>, string>>(transformer);
+            Assert.IsInstanceOf<TransformBlock<TriggerRequest, string>>(transformer);
         }
 
         [Test]
