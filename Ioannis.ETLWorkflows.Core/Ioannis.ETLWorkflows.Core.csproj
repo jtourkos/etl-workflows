@@ -5,6 +5,7 @@
     <Copyright>Ioannis Tourkogiorgis</Copyright>
     <Authors>Ioannis Tourkogiorgis</Authors>
     <RepositoryUrl>https://github.com/g-tourkogiorgis/ETLWorkflows</RepositoryUrl>
+    <Version>1.2.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
