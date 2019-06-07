@@ -23,3 +23,7 @@ Visit the [Wiki](https://github.com/g-tourkogiorgis/ETLWorkflows/wiki) (WIP) for
 
 ## License
 ETL Workflows is licensed under the [GNU General Public License v3.0](https://github.com/g-tourkogiorgis/ETLWorkflows/blob/master/LICENSE) license.
+
+## TODO
+- Core project to separate NuGet package
+- Project's Wiki
