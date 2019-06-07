@@ -1,6 +1,6 @@
 # ETL Workflows 
 [![Build Status](https://travis-ci.org/g-tourkogiorgis/ETLWorkflows.svg?branch=master)](https://travis-ci.org/g-tourkogiorgis/ETLWorkflows)  
-[![NuGet](https://img.shields.io/nuget/v/ETLWorkflows.SDK.svg)](https://www.nuget.org/packages/ETLWorkflows.SDK/)
+[![NuGet](https://img.shields.io/nuget/v/Ioannis.ETLWorkflows.SDK.svg)](https://www.nuget.org/packages/Ioannis.ETLWorkflows.SDK/)
 
 [ETL Workflows](https://github.com/g-tourkogiorgis/ETLWorkflows/wiki) is a lightweight .NET framework for building simple [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) processes that builds upon Microsoft's [TPL Dataflow](https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/dataflow-task-parallel-library) library.  
 
