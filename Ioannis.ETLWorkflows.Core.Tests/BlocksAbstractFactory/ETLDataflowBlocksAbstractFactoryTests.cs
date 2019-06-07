@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-using ETLWorkflows.Core.BlocksAbstractFactory;
+using Ioannis.ETLWorkflows.Core.BlocksAbstractFactory;
 using NUnit.Framework;
 
-namespace ETLWorkflows.Core.Tests.BlocksAbstractFactory
+namespace Ioannis.ETLWorkflows.Core.Tests.BlocksAbstractFactory
 {
     [TestFixture]
     public class ETLDataflowBlocksAbstractFactoryTests

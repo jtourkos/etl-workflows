@@ -1,4 +1,4 @@
-﻿namespace ETLWorkflows.Core
+﻿namespace Ioannis.ETLWorkflows.Core
 {
     public class TriggerRequest<T>
     {

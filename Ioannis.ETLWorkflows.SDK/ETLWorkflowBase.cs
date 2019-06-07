@@ -3,12 +3,12 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-using ETLWorkflows.Core;
-using ETLWorkflows.Core.BlocksAbstractFactory;
+using Ioannis.ETLWorkflows.Core;
+using Ioannis.ETLWorkflows.Core.BlocksAbstractFactory;
 
 [assembly: InternalsVisibleTo("Ioannis.ETLWorkflows.SDK.Tests")]
 
-namespace ETLWorkflows.SDK
+namespace Ioannis.ETLWorkflows.SDK
 {
     /// <summary>
     /// Base class for creating ETL workflows.

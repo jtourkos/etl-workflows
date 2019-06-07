@@ -2,7 +2,7 @@
 using System.Threading.Tasks.Dataflow;
 using NUnit.Framework;
 
-namespace ETLWorkflows.Core.Tests
+namespace Ioannis.ETLWorkflows.Core.Tests
 {
     [TestFixture]
     public class EtlExecutionDataflowBlockOptionsTests

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks.Dataflow;
 
-namespace ETLWorkflows.Core
+namespace Ioannis.ETLWorkflows.Core
 {
     public static class LinkToWithPropagateCompletionExtension
     {

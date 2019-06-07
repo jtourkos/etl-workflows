@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace ETLWorkflows.SDK
+namespace Ioannis.ETLWorkflows.SDK
 {
     /// <summary>
     /// Convenient interface for Dependency injection. The functionality you'll need is implemented in <see cref="ETLWorkflowBase{TRunRequest,TExtractorResult,TTransformerResult,TLoaderResult}"/>

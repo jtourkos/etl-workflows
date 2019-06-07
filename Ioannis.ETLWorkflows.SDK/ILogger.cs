@@ -1,4 +1,4 @@
-﻿namespace ETLWorkflows.SDK
+﻿namespace Ioannis.ETLWorkflows.SDK
 {
     public interface ILogger
     {

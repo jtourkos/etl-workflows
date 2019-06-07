@@ -2,13 +2,12 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
-using ETLWorkflows.Core;
-using ETLWorkflows.Core.BlocksAbstractFactory;
-using ETLWorkflows.SDK;
+using Ioannis.ETLWorkflows.Core;
+using Ioannis.ETLWorkflows.Core.BlocksAbstractFactory;
 using Moq;
 using NUnit.Framework;
 
-namespace Tests
+namespace Ioannis.ETLWorkflows.SDK.Tests
 {
     public class ETLWorkflowBaseTests
     {

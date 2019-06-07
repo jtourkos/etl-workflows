@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
-namespace ETLWorkflows.Core.BlocksAbstractFactory
+namespace Ioannis.ETLWorkflows.Core.BlocksAbstractFactory
 {
     public class ETLDataflowBlocksAbstractFactory : IETLDataflowBlocksAbstractFactory
     {
