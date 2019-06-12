@@ -8,5 +8,5 @@ jobs:
   - stage: Continuous Integration
     script:
     - dotnet build -c Release
-    - dotnet test ./ETLWorkflows.SDK.Tests/
-    - dotnet test ./ETLWorkflows.Core.Tests/
+    - dotnet test ./Ioannis.ETLWorkflows.SDK.Tests/
+    - dotnet test ./Ioannis.ETLWorkflows.Core.Tests/
