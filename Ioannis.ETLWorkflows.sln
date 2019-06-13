@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioannis.ETLWorkflows.SDK.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioannis.ETLWorkflows.Core.Tests", "Ioannis.ETLWorkflows.Core.Tests\Ioannis.ETLWorkflows.Core.Tests.csproj", "{D646636D-189A-44D9-A052-E0A6E16998F4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioannis.ETLWorkflows.Triggers.ETLManagementService.API", "Ioannis.ETLWorkflows.Trigger.ETLManagementService.API\Ioannis.ETLWorkflows.Triggers.ETLManagementService.API.csproj", "{EFE275FB-1D7F-4C4B-83A1-3D5F5D9518DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D646636D-189A-44D9-A052-E0A6E16998F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D646636D-189A-44D9-A052-E0A6E16998F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D646636D-189A-44D9-A052-E0A6E16998F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE275FB-1D7F-4C4B-83A1-3D5F5D9518DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE275FB-1D7F-4C4B-83A1-3D5F5D9518DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE275FB-1D7F-4C4B-83A1-3D5F5D9518DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE275FB-1D7F-4C4B-83A1-3D5F5D9518DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
