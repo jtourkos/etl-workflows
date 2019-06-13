@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 
@@ -8,9 +7,9 @@ namespace Ioannis.ETLWorkflows.Triggers.ETLManagementService.API.Services.Rabbit
 {
     public class RabbitMQClient<T> : IDisposable, IRabbitMQClient<T>
     {
-        private const string EXCHANGE_NAME = "gf.etl-workflow.topic";
+        private const string EXCHANGE_NAME = "etl-workflow.topic";
         private const string ROUTING_KEY = "etl-workflow.trigger";
-        private const string ETL_TRIGGERS_QUEUE_NAME = "gf.etl-workflow";
+        private const string ETL_TRIGGERS_QUEUE_NAME = "etl-workflow";
 
         private bool _disposed = false;
         private readonly IModel _channel;
