@@ -6,9 +6,9 @@
 
 #### How and why this project was created?
 
-I am a big fan of the [Dataflow programming paradigm](https://en.wikipedia.org/wiki/Dataflow_programming) (when appropriate), and one day a new ticket came in for our team, 
+I am a big fan of the [Dataflow programming paradigm](https://en.wikipedia.org/wiki/Dataflow_programming), and one day a new ticket came in for our team, 
 to implement several ETL processes. 
-I though, that this was the perfect use case for introducing to the rest of the team the TPL Dataflow library.
+I thought, that this was the perfect use case for introducing to the rest of the team the TPL Dataflow library.
 In order to make it a bit simpler, I decided to create a reusable abstraction over this library, so that the team has its first exposure to this powerful tool and the new way of thinking in flows, 
 so we could use TPL Dataflow later on by itself.
 
